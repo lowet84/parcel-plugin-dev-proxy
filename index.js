@@ -25,6 +25,7 @@ const proxy = async () => {
 
   app.use('/', proxyMiddleware('http://localhost:1234'))
 
+  console.log('Running proxy on: http://localhost:3800')
   app.listen(3800)
 }
 
