@@ -10,14 +10,13 @@ const proxy = async () => {
 
   var settings = JSON.parse(fs.readFileSync('proxy.json'))
 
-  var keys = Object.keys(settings)
-  keys.forEach(key => {
-    console.log(`Using api server: ${key}`)
+  settings.forEach(setting => {
+    console.log(`Using api server: ${setting.path} -> ${setting.target}`)
 
     app.use(
-      settings[key].path,
+      setting.path,
       proxyMiddleware({
-        target: settings[key].target,
+        target: setting.target,
         changeOrigin: true
       })
     )
