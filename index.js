@@ -29,6 +29,5 @@ const proxy = async () => {
 }
 
 module.exports = function(bundler) {
-  console.log(process.argv)
-  proxy()
+  if (!process.argv.includes('build')) proxy()
 }
